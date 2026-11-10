@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Lovely Bhabhi 💗</title>
+<style>
+:root{--pink:#ff5c9a;--deep:#a83268;--cream:#fff7fb}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:"Trebuchet MS",Arial,sans-serif;background:linear-gradient(135deg,#ffe4ef,#fff8fb 55%,#e8f7ff);color:#63364e;overflow-x:hidden}
+main{min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:min(720px,100%);background:rgba(255,255,255,.88);border:2px solid #ffd0e1;border-radius:28px;padding:clamp(24px,5vw,48px);text-align:center;box-shadow:0 18px 55px #c96b9630;position:relative;overflow:hidden}
+h1{color:var(--deep);font-size:clamp(2rem,6vw,3.2rem);margin:8px 0 12px}
+p{font-size:1.08rem;line-height:1.8}
+.heart{font-size:3rem;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{transform:scale(1.15)}}
+.buttons{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:28px;min-height:58px}
+button{border:0;border-radius:999px;padding:14px 30px;font-size:1.05rem;font-weight:700;cursor:pointer;box-shadow:0 7px 18px #a8326828;transition:transform .18s}
+#yes,.next{background:var(--pink);color:white}
+#no{background:#f2eaf0;color:#80576d;position:relative}
+button:hover{transform:translateY(-2px)}
+.hidden{display:none}
+.message{white-space:normal;text-align:left;background:#fff5f9;border-radius:20px;padding:22px;border:1px dashed #f3a9c5}
+.next{margin-top:24px}
+.gif{width:min(100%,640px);border-radius:18px;margin:12px auto;display:block;box-shadow:0 8px 24px #b8326820}
+.small{font-size:.9rem;color:#9a6b83}
+.sparkle{position:absolute;opacity:.5;font-size:25px;animation:float 4s ease-in-out infinite}
+.s1{top:18px;left:22px}.s2{right:24px;bottom:20px;animation-delay:1s}
+@keyframes float{50%{transform:translateY(-12px) rotate(12deg)}}
+</style>
+</head>
+<body>
+<main>
+<section class="card" id="page1">
+  <span class="sparkle s1">✨</span><span class="sparkle s2">💗</span>
+  <div class="heart">🐼🎀</div>
+  <h1>Hey, Bhabhi!</h1>
+  <p>I made a little birthday surprise for you. Are you ready to open it? 💝</p>
+  <div class="buttons">
+    <button id="yes">Yes, let's go! 💖</button>
+    <button id="no">No 🙈</button>
+  </div>
+  <p class="small">P.S. The “No” button is a little shy. 😄</p>
+</section>
+
+<section class="card hidden" id="page2">
+  <div class="heart">🌷💞🌷</div>
+  <h1>Happy Birthday, Bhabhi! 🎂</h1>
+  <div class="message">
+    Happy birthday bhabi! May this birthday bring happiness and joy into your life.
+
+    <br><br>Bhabi, aapse achhi ladki mere bhai ko koi nahi mil sakti. I have watched him and seen how much he cares for you and how happy he is with you.
+
+    <br><br>Bhabi, main uske saath, I think, 7 years se hoon, par maine usko itna zyada khush aapke aane ke baad hi dekha hai. May you both stay together forever ♾️
+
+    <br><br>Aapki uski life mein entry ke baad he has totally started glowing. May this birthday bring lots of success and happiness into your life! 😊🎈
+  </div>
+  <button class="next" id="next">Move forward ➜</button>
+</section>
+
+<section class="card hidden" id="page3">
+  <div class="heart">🥳🎉🎈</div>
+  <h1>Happiest Birthday, Bhabhi!</h1>
+  <img class="gif" src="birthday-celebration.gif" alt="Animated happy birthday balloons and celebration">
+  <p>Keep smiling, keep shining, and keep spreading happiness. Lots of love! 💗</p>
+  <p style="font-size:2rem">🎂 🎁 🌸 💐 🎊</p>
+  <p class="small">Made with love, just for you.</p>
+</section>
+</main>
+<script>
+const page1=document.getElementById('page1'), page2=document.getElementById('page2'), page3=document.getElementById('page3');
+const no=document.getElementById('no');
+function show(page){[page1,page2,page3].forEach(p=>p.classList.add('hidden'));page.classList.remove('hidden')}
+document.getElementById('yes').addEventListener('click',()=>show(page2));
+document.getElementById('next').addEventListener('click',()=>show(page3));
+function dodge(){
+  const card=page1.getBoundingClientRect(), btn=no.getBoundingClientRect();
+  const maxX=Math.max(0,card.width-btn.width-30), maxY=170;
+  no.style.position='absolute';
+  no.style.left=(15+Math.random()*maxX)+'px';
+  no.style.top=(Math.max(110,Math.random()*maxY+110))+'px';
+}
+no.addEventListener('mouseenter',dodge);
+no.addEventListener('touchstart',e=>{e.preventDefault();dodge()},{passive:false});
+no.addEventListener('click',dodge);
+</script>
+</body>
+</html>
